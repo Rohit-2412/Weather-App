@@ -17,7 +17,7 @@ class DailyDataForecast extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 525,
+      height: 540,
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
@@ -80,7 +80,7 @@ class DailyDataForecast extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 60,
+                      // width: 60,
                       // height: 30,
                       child: Text(
                         "${weatherDataDaily.daily[index].temp!.max}° / ${weatherDataDaily.daily[index].temp!.min}°",

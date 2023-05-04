@@ -28,6 +28,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  Text(
+                    "Weather App",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue[500],
+                    ),
+                  ),
+                  const SizedBox(height: 100),
                   Image.asset('assets/icons/clouds.png'),
                   const SizedBox(height: 20),
                   const CircularProgressIndicator()
