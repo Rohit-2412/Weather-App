@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:weatherapp_starter_project/controller/global_controller.dart';
 import 'package:weatherapp_starter_project/utils/custom_colors.dart';
 import 'package:weatherapp_starter_project/widgets/comfort_level.dart';
