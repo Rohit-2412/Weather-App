@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:weatherapp_starter_project/controller/global_controller.dart';
 import 'package:weatherapp_starter_project/utils/custom_colors.dart';
 import 'package:weatherapp_starter_project/widgets/comfort_level.dart';
@@ -42,53 +43,51 @@ class _HomeScreenState extends State<HomeScreen> {
                   const CircularProgressIndicator()
                 ],
               ))
-            : Container(
-                child: Center(
-                  child: ListView(
-                    scrollDirection: Axis.vertical,
-                    children: [
-                      const SizedBox(
-                        height: 10,
-                      ),
+            : Center(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
 
-                      const HeaderWidget(),
+                    const HeaderWidget(),
 
-                      // for current temperature ('current')
-                      CurrentWeatherWidget(
+                    // for current temperature ('current')
+                    CurrentWeatherWidget(
+                      weatherDataCurrent:
+                          globalController.getData().getCurrentWeather(),
+                    ),
+
+                    const SizedBox(height: 20),
+
+                    // hourly basis data ('hourly')
+                    HourlyDataWidget(
+                      weatherDataHourly:
+                          globalController.getData().getHourlyWeather(),
+                    ),
+
+                    // daily data forecast ('daily')
+                    DailyDataForecast(
+                      weatherDataDaily:
+                          globalController.getData().getDailyWeather(),
+                    ),
+
+                    // slider and other widgets
+                    Container(
+                      height: 1,
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      color: CustomColors.dividerLine,
+                    ),
+
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    ComfortLevel(
                         weatherDataCurrent:
-                            globalController.getData().getCurrentWeather(),
-                      ),
-
-                      const SizedBox(height: 20),
-
-                      // hourly basis data ('hourly')
-                      HourlyDataWidget(
-                        weatherDataHourly:
-                            globalController.getData().getHourlyWeather(),
-                      ),
-
-                      // daily data forecast ('daily')
-                      DailyDataForecast(
-                        weatherDataDaily:
-                            globalController.getData().getDailyWeather(),
-                      ),
-
-                      // slider and other widgets
-                      Container(
-                        height: 1,
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        color: CustomColors.dividerLine,
-                      ),
-
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      ComfortLevel(
-                          weatherDataCurrent:
-                              globalController.getData().getCurrentWeather()),
-                    ],
-                  ),
+                            globalController.getData().getCurrentWeather()),
+                  ],
                 ),
               )),
       ),

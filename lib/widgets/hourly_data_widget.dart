@@ -40,42 +40,43 @@ class HourlyDataWidget extends StatelessWidget {
             ? 12
             : weatherDataHourly.hourly.length,
         itemBuilder: (context, index) {
-          return Obx(() => GestureDetector(
-                onTap: () {
-                  cardIndex.value = index;
-                },
-                child: Container(
-                  width: 90,
-                  margin: const EdgeInsets.only(left: 15, right: 5),
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.black12),
-                    borderRadius: BorderRadius.circular(12),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(0.5, 0),
-                        blurRadius: 30,
-                        color: CustomColors.dividerLine.withAlpha(150),
-                        spreadRadius: 1,
-                      )
-                    ],
-                    gradient: cardIndex.value == index
-                        ? const LinearGradient(
-                            colors: [
-                              CustomColors.firstGradientColor,
-                              CustomColors.secondGradientColor
-                            ],
-                          )
-                        : null,
-                  ),
-                  child: HourlyDetails(
-                    temp: weatherDataHourly.hourly[index].temp!,
-                    index: index,
-                    cardIndex: cardIndex.toInt(),
-                    timestamp: weatherDataHourly.hourly[index].dt!,
-                    icon: weatherDataHourly.hourly[index].weather![0].icon!,
-                  ),
+          return Obx(
+            () => GestureDetector(
+              onTap: () {
+                cardIndex.value = index;
+              },
+              child: Container(
+                width: 90,
+                margin: const EdgeInsets.only(left: 15, right: 5),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.black26),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: CustomColors.dividerLine.withOpacity(.7),
+                      blurRadius: 5,
+                      offset: const Offset(-2, -5),
+                    )
+                  ],
+                  gradient: cardIndex.value == index
+                      ? const LinearGradient(
+                          colors: [
+                            CustomColors.firstGradientColor,
+                            CustomColors.secondGradientColor
+                          ],
+                        )
+                      : null,
                 ),
-              ));
+                child: HourlyDetails(
+                  temp: weatherDataHourly.hourly[index].temp!,
+                  index: index,
+                  cardIndex: cardIndex.toInt(),
+                  timestamp: weatherDataHourly.hourly[index].dt!,
+                  icon: weatherDataHourly.hourly[index].weather![0].icon!,
+                ),
+              ),
+            ),
+          );
         },
       ),
     );
@@ -107,34 +108,32 @@ class HourlyDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 10),
-          child: Text(
-            getTime(timestamp),
-            style: TextStyle(
-                color: cardIndex == index ? Colors.white : Colors.black),
-          ),
+    return Column(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+      Container(
+        margin: const EdgeInsets.only(top: 10),
+        child: Text(
+          getTime(timestamp),
+          style: TextStyle(
+              color: cardIndex == index ? Colors.white : Colors.black),
         ),
-        Container(
-          height: 40,
-          width: 40,
-          margin: const EdgeInsets.all(5),
-          child: Image.asset("assets/weather/$icon.png"),
+      ),
+      Container(
+        height: 40,
+        width: 40,
+        margin: const EdgeInsets.all(5),
+        child: Image.asset("assets/weather/$icon.png"),
+      ),
+      Container(
+        margin: const EdgeInsets.only(bottom: 10),
+        child: Text(
+          "$temp°",
+          style: TextStyle(
+              fontSize: 18,
+              color: index == cardIndex
+                  ? Colors.white
+                  : CustomColors.textColorBlack),
         ),
-        Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            child: Text(
-              "$temp°",
-              style: TextStyle(
-                  fontSize: 18,
-                  color: index == cardIndex
-                      ? Colors.white
-                      : CustomColors.textColorBlack),
-            ))
-      ],
-    );
+      )
+    ]);
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../controller/global_controller.dart';
@@ -46,10 +47,14 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           alignment: Alignment.topLeft,
           child: Text(
             city,
-            style: const TextStyle(
-              fontSize: 35,
+            style: GoogleFonts.pacifico(
+              fontSize: 50,
               height: 2,
             ),
+            // style: const TextStyle(
+            //   fontSize: 35,
+            //   height: 2,
+            // ),
           ),
         ),
 
@@ -59,11 +64,16 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           alignment: Alignment.topLeft,
           child: Text(
             date,
-            style: TextStyle(
-              fontSize: 14,
+            style: GoogleFonts.roboto(
+              fontSize: 20,
               color: Colors.grey[700],
               height: 1.5,
             ),
+            // style: TextStyle(
+            //   fontSize: 14,
+            //   color: Colors.grey[700],
+            //   height: 1.5,
+            // ),
           ),
         )
       ],
